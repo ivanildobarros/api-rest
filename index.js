@@ -57,10 +57,10 @@ server.get('/users', (req, res) => {
 checkUserExists) para para termos certeza que existe o usuário ou
 o name está correto.
 */
-server.get('/users/:index', checkUserInArray, checkUserExists, (req, res) => {
+server.get('/users/:index', checkUserInArray, (req, res) => {
   const { index } = req.params;//desestruturando o index informado na rota
 
-  return res.json(user[index]);
+  return res.json(users[index]);
   //Retorna o nome no usuário, 
 })
 
@@ -94,7 +94,7 @@ server.delete('/users/:index', checkUserInArray, (req, res) => {
   /*splice percorre o vetor até o index e recorta a posição informada, 
   1 é a quantidade que deseja retirar a partir do index,
   (se por exemplo informar 2, recortaria a posição do index e a proxima).*/
-  users.splice(index, 2);
+  users.splice(index, 1);
 
   //Retorna a lista atualizada
   return res.json(users);
